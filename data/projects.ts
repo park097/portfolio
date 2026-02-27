@@ -1,4 +1,5 @@
-export type ProjectCategory = "Frontend" | "Backend" | "Infra";
+export type ProjectCategory = "web" | "app";
+export type ProjectType = "Company" | "Personal";
 
 export type Project = {
   slug: string;
@@ -8,7 +9,9 @@ export type Project = {
   problemSolving: string[];
   stack: string[];
   category: ProjectCategory;
+  type: ProjectType;
   thumbnail: string;
+  secondaryThumbnail?: string;
   githubUrl: string;
   demoUrl: string;
 };
@@ -26,8 +29,9 @@ export const projects: Project[] = [
       "권한별 메뉴 노출 규칙을 공통 훅으로 통합해 유지보수 비용 절감",
     ],
     stack: ["Next.js", "TypeScript", "Tailwind", "TanStack Query"],
-    category: "Frontend",
-    thumbnail: "/projects/operations-dashboard.svg",
+    category: "web",
+    type: "Company",
+    thumbnail: "/projects/cws.png",
     githubUrl: "https://github.com/example/operations-dashboard",
     demoUrl: "https://demo.example.com/operations-dashboard",
   },
@@ -43,9 +47,10 @@ export const projects: Project[] = [
       "통합 테스트 시나리오를 분리해 배포 전 회귀 검증 강화",
     ],
     stack: ["Spring Boot", "Java", "PostgreSQL", "Redis"],
-    category: "Backend",
+    category: "web",
+    type: "Company",
     thumbnail: "/projects/workflow-api.svg",
-    githubUrl: "https://github.com/example/workflow-api",
+    githubUrl: "https://github.com/tablet1.png",
     demoUrl: "https://demo.example.com/workflow-api",
   },
   {
@@ -60,8 +65,10 @@ export const projects: Project[] = [
       "배포 로그 수집 체계를 정비해 사후 분석 정확도 향상",
     ],
     stack: ["Jenkins", "Docker", "Nginx", "Bash"],
-    category: "Infra",
-    thumbnail: "/projects/onprem-deploy-pipeline.svg",
+    category: "app",
+    type: "Company",
+    thumbnail: "/projects/pda.png",
+    secondaryThumbnail: "/projects/pda2.png",
     githubUrl: "https://github.com/example/onprem-deploy-pipeline",
     demoUrl: "https://demo.example.com/onprem-deploy-pipeline",
   },
@@ -77,11 +84,12 @@ export const projects: Project[] = [
       "비정상 요청을 조기 차단하는 서버 검증 체계 도입",
     ],
     stack: ["React", "Node.js", "MongoDB", "Express"],
-    category: "Frontend",
-    thumbnail: "/projects/knowledge-center.svg",
+    category: "web",
+    type: "Personal",
+    thumbnail: "/projects/monitor.png",
     githubUrl: "https://github.com/example/knowledge-center",
     demoUrl: "https://demo.example.com/knowledge-center",
   },
 ];
 
-export const projectFilters: Array<"All" | ProjectCategory> = ["All", "Frontend", "Backend", "Infra"];
+export const projectFilters: Array<"All" | ProjectCategory> = ["All", "web", "app"];

@@ -19,12 +19,15 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
     notFound();
   }
 
+  const categoryLabel = project.category === "web" ? "Web" : "App";
+  const hasSecondaryImage = Boolean(project.secondaryThumbnail);
+
   return (
     <main>
       <section className="section pt-16 md:pt-24">
         <div className="container grid gap-8 lg:grid-cols-[1.25fr_1fr]">
           <div className="space-y-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-primary/80">{project.category}</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-primary/80">{categoryLabel}</p>
             <h1 className="text-3xl font-light md:text-5xl">{project.title}</h1>
             <p className="text-zinc-300">{project.longDescription}</p>
             <div className="flex flex-wrap gap-2">
@@ -52,14 +55,38 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             </div>
           </div>
 
-          <div className="glass-card relative min-h-72 overflow-hidden border border-white/10">
-            <Image
-              src={project.thumbnail}
-              alt={`${project.title} 상세 썸네일`}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 40vw"
-            />
+          <div className="glass-card relative min-h-72 overflow-hidden border border-white/10 bg-slate-900/40">
+            {!hasSecondaryImage && (
+              <Image
+                src={project.thumbnail}
+                alt={`${project.title} thumbnail`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
+            )}
+            {hasSecondaryImage && (
+              <>
+                <div className="absolute inset-y-0 left-0 w-[60%]">
+                  <Image
+                    src={project.thumbnail}
+                    alt={`${project.title} primary thumbnail`}
+                    fill
+                    className="object-contain p-6"
+                    sizes="(max-width: 1024px) 60vw, 24vw"
+                  />
+                </div>
+                <div className="absolute inset-y-6 right-4 w-[36%] overflow-hidden rounded-xl border border-white/30 bg-black/35 shadow-xl">
+                  <Image
+                    src={project.secondaryThumbnail as string}
+                    alt={`${project.title} secondary thumbnail`}
+                    fill
+                    className="object-contain p-2"
+                    sizes="(max-width: 1024px) 34vw, 14vw"
+                  />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -67,7 +94,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
       <section className="pb-16">
         <div className="container">
           <div className="glass-card max-w-4xl p-6 md:p-8">
-            <h2 className="text-2xl font-light">문제 해결 포인트</h2>
+            <h2 className="text-2xl font-light">Problem Solving</h2>
             <ul className="mt-5 space-y-3">
               {project.problemSolving.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-zinc-300">

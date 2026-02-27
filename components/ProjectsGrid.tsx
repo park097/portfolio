@@ -6,6 +6,7 @@ import { projectFilters } from "@/data/projects";
 import ProjectCard from "@/components/ProjectCard";
 
 type Filter = "All" | ProjectCategory;
+const formatCategoryLabel = (value: Filter) => (value === "All" ? "All" : value === "web" ? "Web" : "App");
 
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<Filter>("All");
@@ -29,7 +30,7 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
                 : "border-white/15 text-zinc-300 hover:border-primary/35 hover:text-primary"
             }`}
           >
-            {item}
+            {formatCategoryLabel(item)}
           </button>
         ))}
       </div>
