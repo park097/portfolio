@@ -42,7 +42,7 @@ export default function TechStack() {
       <div className="container space-y-5">
         <div>
           <h2 className="text-2xl font-medium md:text-3xl">Tech Stack</h2>
-          <p className="mt-2 text-sm text-zinc-400">프로젝트에서 실제 사용한 기술 스택을 중심으로 구성했습니다.</p>
+          <p className="mt-2 text-sm text-zinc-400">보유 기술 스택을 정리하였습니다.</p>
         </div>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {stackGroups.map((group, idx) => {

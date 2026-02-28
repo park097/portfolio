@@ -6,6 +6,5 @@ const nextConfig = {
     unoptimized: true,
   },
 }
->>>>>>> ccb2a9a (서버수정)
 
 export default nextConfig;

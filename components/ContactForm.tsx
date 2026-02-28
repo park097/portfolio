@@ -1,25 +1,48 @@
-"use client";
+﻿"use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
 export default function ContactForm() {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const emitFeedback = (message: string) => {
+    window.dispatchEvent(new CustomEvent("app-feedback", { detail: { message } }));
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (isSubmitting) return;
 
     const form = event.currentTarget;
     const formData = new FormData(form);
-    const name = String(formData.get("name") ?? "").trim();
-    const email = String(formData.get("email") ?? "").trim();
-    const message = String(formData.get("message") ?? "").trim();
 
-    const subject = encodeURIComponent(`[Portfolio Contact] ${name || "No Name"}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/qkralsgml24@gmail.com", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
 
-    window.location.href = `mailto:qkralsgml24@gmail.com?subject=${subject}&body=${body}`;
+      if (!response.ok) {
+        throw new Error(`Request failed: ${response.status}`);
+      }
+
+      form.reset();
+      emitFeedback("전송되었습니다.");
+    } catch {
+      emitFeedback("전송에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <form className="glass-card space-y-4 p-6 md:p-8" aria-label="contact form" onSubmit={handleSubmit}>
+      <input type="hidden" name="_subject" value="[Portfolio] New Contact Message" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
       <div className="space-y-2">
         <label htmlFor="home-name" className="text-sm text-zinc-300">
           Name
@@ -58,10 +81,12 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
+        disabled={isSubmitting}
         className="rounded-md border border-primary/60 bg-primary/10 px-5 py-2 text-sm text-primary transition hover:shadow-glow"
       >
-        Send Message
+        {isSubmitting ? "Sending..." : "Send Message"}
       </button>
+      <p className="text-xs text-zinc-400">첫 전송 시 FormSubmit 인증 메일에서 활성화가 필요할 수 있습니다.</p>
     </form>
   );
 }

@@ -8,7 +8,7 @@ export default function AboutSection() {
       <div className="container space-y-6">
         <div>
           <h2 className="text-2xl font-medium md:text-3xl">About</h2>
-          <p className="mt-2 text-sm text-zinc-400">기본 프로필과 연락 정보를 정리했습니다.</p>
+          <p className="mt-2 text-sm text-zinc-400">기본 프로필과 연락 정보를 확인할 수 있습니다.</p>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-2">
