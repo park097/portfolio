@@ -5,7 +5,7 @@ import ContactForm from "@/components/ContactForm";
 import ProjectsGrid from "@/components/ProjectsGrid";
 import TechStack from "@/components/TechStack";
 import { projects } from "@/data/projects";
-import { FileText, Github, Phone } from "lucide-react";
+import { FileText, Github, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 
 export default function HomePage() {
@@ -55,12 +55,22 @@ export default function HomePage() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <ContactForm />
+            {/* <ContactForm /> */}
 
             <div className="glass-card p-6 md:p-8">
               <h2 className="text-xl font-medium">Contact Channels</h2>
               <p className="mt-2 text-sm text-zinc-400">원하시는 채널로 연락하실 수 있습니다.</p>
               <div className="mt-5 space-y-3">
+                <Link
+                  href="mailto:qkralsgml24@gmail.com"
+                  className="flex items-center justify-between rounded-lg border border-white/12 px-4 py-3 text-sm text-zinc-200 transition hover:border-primary/45 hover:text-primary"
+                >
+                  <span className="inline-flex items-center gap-2">
+                    <Mail size={16} />
+                    qkralsgml24@gmail.com
+                  </span>
+                  <span aria-hidden>→</span>
+                </Link>
                 <Link
                   href="https://www.notion.so/Full-Stack-Developer-Portfolio-23ad112469dd80d8b1c0cba116759e6b"
                   className="flex items-center justify-between rounded-lg border border-white/12 px-4 py-3 text-sm text-zinc-200 transition hover:border-primary/45 hover:text-primary"
