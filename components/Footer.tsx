@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const links = [
   { href: "mailto:qkralsgml24@gmail.com", label: "Email", icon: Mail },
-  { href: "https://github.com/example", label: "GitHub", icon: Github },
+  { href: "https://github.com/park097", label: "GitHub", icon: Github },
   { href: "tel:01087422845", label: "010-8742-2845", icon: Phone },
 ];
 

@@ -12,7 +12,7 @@ const stackGroups = [
   {
     title: "Backend",
     icon: Server,
-    items: ["Java 17", "Spring Boot", "JPA (Hibernate)", "PHP", "Node.js", "JWT"],
+    items: ["Java", "Spring Boot", "JPA (Hibernate)", "PHP", "Node.js", "JWT"],
   },
   {
     title: "Mobile",

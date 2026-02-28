@@ -65,7 +65,7 @@ export const projects: Project[] = [
       "현장 설비/작업 데이터를 서버로 수집하고, 대시보드에서 상태를 한눈에 확인할 수 있도록 구성한 모니터링 시스템입니다.",
     majorFeatures: [
       "생산량, 설비 상태, 작업 진행률을 실시간으로 시각화",
-      "설비 상태(ON/PAUSE)와 주요 지표를 색상 기반으로 즉시 파악 가능",
+      "설비 상태와 주요 지표를 색상 기반으로 즉시 파악 가능",
       "라인/설비 단위 상세 조회로 현장 이슈 대응 시간 단축",
     ],
     stack: ["PHP", "MSSQL", "Flutter", "Dart"],
@@ -102,7 +102,7 @@ export const projects: Project[] = [
     title: "스틸코리아 MES",
     description: "생산 기준정보 관리 및 작업 실적 통합 관리를 위한 MES 구축 프로젝트",
     longDescription:
-      "스틸코리아 생산 현장에 MES 시스템을 구축하여 작업 지시, 생산 정보 등록, 설비 가동 정보 수집을 통합 관리하도록 설계한 프로젝트입니다. 현장 작업자가 직접 생산 정보를 등록하고, 터닝 2호기의 가동/비가동 데이터를 수집하여 실적과 연계되도록 구현했습니다. 또한 공정·제품별 라우팅 및 Cycle Time 등 생산 기준정보를 시스템에서 관리하고, 이를 생산계획 수립에 활용할 수 있도록 구성했습니다.",
+      "스틸코리아 생산 현장에 MES 시스템을 구축하여 작업 지시, 생산 정보 등록, 설비 가동 정보 수집을 통합 관리하도록 설계한 프로젝트입니다.",
     majorFeatures: [
       "일,주,월별 작업실적 조회기능",
       "생산성적서 조회, 출력기능",
@@ -118,7 +118,7 @@ export const projects: Project[] = [
   {
   slug: "mh-delivery",
   title: "배달 앱 만들기 (MH DELIVERY)",
-  description: "Firebase 기반 음식 배달 서비스 앱 (Flutter + 상태관리 중심 설계)",
+  description: "Firebase 기반 음식 배달 서비스 앱",
   longDescription:
     "MH DELIVERY는 Firebase 기반의 음식 배달 서비스 앱으로 Flutter 프레임워크를 활용해 개발한 개인 프로젝트입니다. 로그인 상태 유지, 데이터 캐싱, 실시간 UI 반영 등 실제 서비스 구조를 고려하여 구현하였으며, 사용자 경험을 중심으로 UX 흐름과 상태 관리 구조를 설계했습니다.",
   majorFeatures: [
@@ -139,7 +139,7 @@ export const projects: Project[] = [
   {
   slug: "webtoon-clone",
   title: "웹툰 클론코딩",
-  description: "Flutter 기반 웹툰 서비스 클론 프로젝트 (상태관리·UI 구조 설계 중심)",
+  description: "Flutter 기반 웹툰 서비스 클론 프로젝트",
   longDescription:
     "웹툰 플랫폼을 Flutter로 구현한 클론 프로젝트입니다. 로그인 흐름, 정렬 기능, 관심작품 관리, 별점 및 댓글 기능, 결제 연동까지 실제 서비스 구조를 기반으로 구현했습니다. Riverpod을 활용한 상태관리와 Sliver 기반 고급 스크롤 UI 구조 설계에 중점을 두었습니다.",
   majorFeatures: [
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     title: "Developer Portfolio",
     description: "프로젝트 중심으로 경험을 보여주는 개인 포트폴리오 웹사이트",
     longDescription:
-      "Next.js 기반으로 포트폴리오를 설계하고, 프로젝트 목록/상세, 인터랙션 UI, 반응형 레이아웃까지 직접 구현했습니다. 또한 온프레미스 서버를 구축해 도메인 연결 후 실제 서비스 형태로 배포했습니다.",
+      "Next.js 기반으로 포트폴리오를 설계하고, 프로젝트 목록/상세, 인터랙션 UI, 반응형 레이아웃까지 구현했습니다. 또한 온프레미스 서버를 구축해 도메인 연결 후 실제 서비스 형태로 배포했습니다.",
     majorFeatures: [
       "프로젝트 카드 필터링, 상세 페이지 라우팅, 썸네일 구성 등 포트폴리오 핵심 기능 구현",
       "Hero 인터랙션, 스크롤 유도, 섹션 전환 애니메이션 등 사용자 경험 중심 UI 구성",
