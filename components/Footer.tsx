@@ -1,10 +1,10 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 
 const links = [
-  { href: "mailto:minhee.park@example.com", label: "Email", icon: Mail },
+  { href: "mailto:qkralsgml24@gmail.com", label: "Email", icon: Mail },
   { href: "https://github.com/example", label: "GitHub", icon: Github },
-  { href: "https://linkedin.com/in/example", label: "LinkedIn", icon: Linkedin },
+  { href: "tel:01087422845", label: "010-8742-2845", icon: Phone },
 ];
 
 export default function Footer() {

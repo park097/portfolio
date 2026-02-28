@@ -1,5 +1,6 @@
-import Footer from "@/components/Footer";
+﻿import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import AboutSection from "@/components/AboutSection";
 import ProjectsGrid from "@/components/ProjectsGrid";
 import TechStack from "@/components/TechStack";
 import { projects } from "@/data/projects";
@@ -14,11 +15,13 @@ export default function HomePage() {
     <main>
       <Hero />
 
+      <AboutSection />
+
       <section id="projects" className="section min-h-[100svh] scroll-mt-24">
         <div className="container space-y-6">
           <div>
             <h2 className="text-2xl font-medium md:text-3xl">Featured Projects</h2>
-            <p className="mt-2 text-sm text-zinc-400">핵심 프로젝트를 필터로 빠르게 확인할 수 있습니다.</p>
+            <p className="mt-2 text-sm text-zinc-400">주요 프로젝트를 필터로 빠르게 확인할 수 있습니다.</p>
           </div>
 
           <div className="space-y-12">
@@ -47,11 +50,17 @@ export default function HomePage() {
         <div className="container space-y-6">
           <div>
             <h2 className="text-2xl font-medium md:text-3xl">Contact</h2>
-            <p className="mt-2 text-sm text-zinc-400">아래 채널 또는 폼으로 편하게 연락 주세요.</p>
+            <p className="mt-2 text-sm text-zinc-400">아래 채널을 통해 연락하실 수 있습니다.</p>
           </div>
 
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-            <form className="glass-card space-y-4 p-6 md:p-8" aria-label="contact form">
+            <form
+              className="glass-card space-y-4 p-6 md:p-8"
+              aria-label="contact form"
+              action="mailto:qkralsgml24@gmail.com"
+              method="post"
+              encType="text/plain"
+            >
               <div className="space-y-2">
                 <label htmlFor="home-name" className="text-sm text-zinc-300">
                   Name
@@ -86,7 +95,7 @@ export default function HomePage() {
                 />
               </div>
               <button
-                type="button"
+                type="submit"
                 className="rounded-md border border-primary/60 bg-primary/10 px-5 py-2 text-sm text-primary transition hover:shadow-glow"
               >
                 Send Message
@@ -105,7 +114,7 @@ export default function HomePage() {
                     <Mail size={16} />
                     Email
                   </span>
-                  <span aria-hidden>↗</span>
+                  <span aria-hidden>→</span>
                 </Link>
                 <Link
                   href="https://github.com/example"
@@ -115,7 +124,7 @@ export default function HomePage() {
                     <Github size={16} />
                     GitHub
                   </span>
-                  <span aria-hidden>↗</span>
+                  <span aria-hidden>→</span>
                 </Link>
                 <Link
                   href="https://linkedin.com/in/example"
@@ -125,7 +134,7 @@ export default function HomePage() {
                     <Linkedin size={16} />
                     LinkedIn
                   </span>
-                  <span aria-hidden>↗</span>
+                  <span aria-hidden>→</span>
                 </Link>
               </div>
             </div>

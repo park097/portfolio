@@ -72,7 +72,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               {categoryLabel}
             </span>
           </div>
-          <p className="line-clamp-2 text-sm text-zinc-300">{project.description}</p>
+          <p className="line-clamp-1 text-sm text-zinc-300">{project.description}</p>
 
           <div className="flex flex-wrap gap-2">
             {project.stack.slice(0, 4).map((item) => (

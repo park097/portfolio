@@ -1,15 +1,39 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { CloudCog, Database, LayoutPanelTop, Server, ShieldCheck, Workflow } from "lucide-react";
 
-const items = [
-  { name: "Next.js / React", icon: LayoutPanelTop },
-  { name: "TypeScript", icon: ShieldCheck },
-  { name: "Spring Boot", icon: Server },
-  { name: "PostgreSQL / Redis", icon: Database },
-  { name: "Docker / Nginx", icon: CloudCog },
-  { name: "CI/CD Workflow", icon: Workflow },
+const stackGroups = [
+  {
+    title: "Frontend",
+    icon: LayoutPanelTop,
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "Vue.js", "HTML5", "CSS", "Tailwind CSS", "Vite", "MUI"],
+  },
+  {
+    title: "Backend",
+    icon: Server,
+    items: ["Java 17", "Spring Boot", "Spring Security", "JPA (Hibernate)", "PHP", "Node.js", "JWT"],
+  },
+  {
+    title: "Mobile",
+    icon: ShieldCheck,
+    items: ["Flutter", "Dart", "Riverpod"],
+  },
+  {
+    title: "Database",
+    icon: Database,
+    items: ["MSSQL", "MySQL", "Firebase"],
+  },
+  {
+    title: "Infra & DevOps",
+    icon: CloudCog,
+    items: ["Nginx", "Ubuntu"],
+  },
+  {
+    title: "Tools & Collaboration",
+    icon: Workflow,
+    items: ["Swagger", "Postman", "Git", "GitHub", "Slack", "Notion"],
+  },
 ];
 
 export default function TechStack() {
@@ -18,24 +42,33 @@ export default function TechStack() {
       <div className="container space-y-5">
         <div>
           <h2 className="text-2xl font-medium md:text-3xl">Tech Stack</h2>
-          <p className="mt-2 text-sm text-zinc-400">운영 환경에서 검증하며 개선한 프로젝트 일부를 소개합니다.</p>
+          <p className="mt-2 text-sm text-zinc-400">프로젝트에서 실제 사용한 기술 스택을 중심으로 구성했습니다.</p>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((item, idx) => {
-            const Icon = item.icon;
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {stackGroups.map((group, idx) => {
+            const Icon = group.icon;
             return (
               <motion.div
-                key={item.name}
+                key={group.title}
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.35, delay: idx * 0.05 }}
-                className="glass-card flex items-center gap-3 p-4"
+                className="glass-card space-y-3 p-4"
               >
-                <div className="rounded-lg border border-primary/35 bg-primary/8 p-2 text-primary">
-                  <Icon size={18} />
+                <div className="flex items-center gap-2">
+                  <div className="rounded-lg border border-primary/35 bg-primary/8 p-2 text-primary">
+                    <Icon size={18} />
+                  </div>
+                  <h3 className="text-sm font-medium text-zinc-100">{group.title}</h3>
                 </div>
-                <span className="text-sm text-zinc-200">{item.name}</span>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span key={item} className="rounded-md border border-white/15 px-2.5 py-1 text-xs text-zinc-200">
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
             );
           })}

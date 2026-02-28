@@ -20,33 +20,71 @@ export default function Header() {
   const sectionIds = useMemo(() => navItems.map((item) => item.id), []);
 
   useEffect(() => {
-    if (pathname !== "/") return;
+    if (pathname !== "/") {
+      setActiveSection("home");
+      return;
+    }
 
-    const sections = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((section): section is HTMLElement => Boolean(section));
+    const hash = window.location.hash.replace("#", "");
+    if (sectionIds.includes(hash)) {
+      setActiveSection(hash);
+    }
 
-    if (!sections.length) return;
+    let observer: IntersectionObserver | null = null;
+    let rafId: number | null = null;
+    let attempts = 0;
+    const maxAttempts = 30;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    const setupObserver = () => {
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter((section): section is HTMLElement => Boolean(section));
 
-        if (visible?.target.id) {
-          setActiveSection(visible.target.id);
+      if (!sections.length) {
+        attempts += 1;
+        if (attempts < maxAttempts) {
+          rafId = window.requestAnimationFrame(setupObserver);
         }
-      },
-      {
-        root: null,
-        rootMargin: "-42% 0px -45% 0px",
-        threshold: [0.12, 0.25, 0.45, 0.65],
+        return;
       }
-    );
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+      observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+          if (visible?.target.id) {
+            setActiveSection(visible.target.id);
+          }
+        },
+        {
+          root: null,
+          rootMargin: "-42% 0px -45% 0px",
+          threshold: [0.12, 0.25, 0.45, 0.65],
+        }
+      );
+
+      sections.forEach((section) => observer?.observe(section));
+    };
+
+    const handleHashChange = () => {
+      const id = window.location.hash.replace("#", "");
+      if (sectionIds.includes(id)) {
+        setActiveSection(id);
+      }
+    };
+
+    setupObserver();
+    window.addEventListener("hashchange", handleHashChange);
+
+    return () => {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+      observer?.disconnect();
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, [pathname, sectionIds]);
 
   const getHref = (id: string) => (pathname === "/" ? `#${id}` : `/#${id}`);
