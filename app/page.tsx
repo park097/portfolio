@@ -17,7 +17,7 @@ export default function HomePage() {
 
       <AboutSection />
 
-      <section id="projects" className="section min-h-[100svh] scroll-mt-24">
+      <section id="projects" className="section min-h-[90svh] scroll-mt-24 md:min-h-[96svh]">
         <div className="container space-y-6">
           <div>
             <h2 className="text-2xl font-medium md:text-3xl">Featured Projects</h2>
@@ -46,7 +46,7 @@ export default function HomePage() {
 
       <TechStack />
 
-      <section id="contact" className="section min-h-[100svh] scroll-mt-24 pt-4">
+      <section id="contact" className="section min-h-[76svh] scroll-mt-24 pt-4 md:min-h-[84svh]">
         <div className="container space-y-6">
           <div>
             <h2 className="text-2xl font-medium md:text-3xl">Contact</h2>

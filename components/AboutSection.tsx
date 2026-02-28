@@ -4,7 +4,7 @@ import { Cake, Contact, GraduationCap, Mail, Phone, Building2, BadgeCheck } from
 
 export default function AboutSection() {
   return (
-    <section id="about" className="section min-h-[100svh] scroll-mt-24">
+    <section id="about" className="section min-h-[68svh] scroll-mt-24 md:min-h-[74svh]">
       <div className="container space-y-6">
         <div>
           <h2 className="text-2xl font-medium md:text-3xl">About</h2>

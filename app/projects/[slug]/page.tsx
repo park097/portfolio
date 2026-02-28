@@ -21,6 +21,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
   const categoryLabel = project.category === "web" ? "Web" : "App";
   const hasSecondaryImage = Boolean(project.secondaryThumbnail);
+  const detailImageHeight = 350;
 
   return (
     <main>
@@ -57,7 +58,10 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             </div>
           </div>
 
-          <div className="glass-card relative min-h-72 overflow-hidden border border-white/10 bg-slate-900/40">
+          <div
+            className="glass-card relative mx-auto w-full max-w-[420px] overflow-hidden border border-white/10 bg-slate-900/40"
+            style={{ height: `${detailImageHeight}px` }}
+          >
             {!hasSecondaryImage && (
               <Image
                 src={project.thumbnail}

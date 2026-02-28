@@ -3,12 +3,12 @@
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 const navItems = [
   { id: "home", label: "Home" },
-  { id: "projects", label: "Projects" },
   { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -16,73 +16,74 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const prevPathnameRef = useRef(pathname);
 
   const sectionIds = useMemo(() => navItems.map((item) => item.id), []);
 
   useEffect(() => {
+    const cameFromDifferentPage = prevPathnameRef.current !== "/" && pathname === "/";
+    if (cameFromDifferentPage && !window.location.hash) {
+      window.scrollTo({ top: 0, behavior: "auto" });
+      setActiveSection("home");
+    }
+    prevPathnameRef.current = pathname;
+
     if (pathname !== "/") {
       setActiveSection("home");
       return;
     }
 
-    const hash = window.location.hash.replace("#", "");
-    if (sectionIds.includes(hash)) {
-      setActiveSection(hash);
-    }
-
-    let observer: IntersectionObserver | null = null;
     let rafId: number | null = null;
-    let attempts = 0;
-    const maxAttempts = 30;
 
-    const setupObserver = () => {
-      const sections = sectionIds
-        .map((id) => document.getElementById(id))
-        .filter((section): section is HTMLElement => Boolean(section));
-
-      if (!sections.length) {
-        attempts += 1;
-        if (attempts < maxAttempts) {
-          rafId = window.requestAnimationFrame(setupObserver);
-        }
+    const updateActiveByScroll = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (sectionIds.includes(hash)) {
+        setActiveSection(hash);
         return;
       }
 
-      observer = new IntersectionObserver(
-        (entries) => {
-          const visible = entries
-            .filter((entry) => entry.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (window.scrollY < 120) {
+        setActiveSection("home");
+        return;
+      }
 
-          if (visible?.target.id) {
-            setActiveSection(visible.target.id);
-          }
-        },
-        {
-          root: null,
-          rootMargin: "-42% 0px -45% 0px",
-          threshold: [0.12, 0.25, 0.45, 0.65],
+      const sections = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter((section): section is HTMLElement => Boolean(section))
+        .sort((a, b) => a.offsetTop - b.offsetTop);
+
+      if (!sections.length) {
+        return;
+      }
+
+      const marker = window.scrollY + 140;
+      let current = "home";
+      for (const section of sections) {
+        if (marker >= section.offsetTop) {
+          current = section.id;
+        } else {
+          break;
         }
-      );
-
-      sections.forEach((section) => observer?.observe(section));
+      }
+      setActiveSection(current);
     };
 
     const handleHashChange = () => {
-      const id = window.location.hash.replace("#", "");
-      if (sectionIds.includes(id)) {
-        setActiveSection(id);
-      }
+      updateActiveByScroll();
     };
 
-    setupObserver();
+    updateActiveByScroll();
+    rafId = window.requestAnimationFrame(updateActiveByScroll);
+    window.addEventListener("scroll", updateActiveByScroll, { passive: true });
+    window.addEventListener("resize", updateActiveByScroll);
     window.addEventListener("hashchange", handleHashChange);
 
     return () => {
       if (rafId !== null) {
         window.cancelAnimationFrame(rafId);
       }
-      observer?.disconnect();
+      window.removeEventListener("scroll", updateActiveByScroll);
+      window.removeEventListener("resize", updateActiveByScroll);
       window.removeEventListener("hashchange", handleHashChange);
     };
   }, [pathname, sectionIds]);

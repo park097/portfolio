@@ -12,7 +12,7 @@ type ProjectCardProps = {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const categoryLabel = project.category === "web" ? "Web" : "App";
   const hasSecondaryImage = Boolean(project.secondaryThumbnail);
-  const imageHeight = project.imageHeight ?? 176;
+  const imageHeight = 350;
 
   return (
     <Link

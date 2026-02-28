@@ -7,12 +7,12 @@ const stackGroups = [
   {
     title: "Frontend",
     icon: LayoutPanelTop,
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "Vue.js", "HTML5", "CSS", "Tailwind CSS", "Vite", "MUI"],
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "Vue.js", "HTML5", "CSS", "Vite",],
   },
   {
     title: "Backend",
     icon: Server,
-    items: ["Java 17", "Spring Boot", "Spring Security", "JPA (Hibernate)", "PHP", "Node.js", "JWT"],
+    items: ["Java 17", "Spring Boot", "JPA (Hibernate)", "PHP", "Node.js", "JWT"],
   },
   {
     title: "Mobile",
@@ -32,13 +32,13 @@ const stackGroups = [
   {
     title: "Tools & Collaboration",
     icon: Workflow,
-    items: ["Swagger", "Postman", "Git", "GitHub", "Slack", "Notion"],
+    items: ["Postman", "Git", "GitHub", "Slack", "Notion"],
   },
 ];
 
 export default function TechStack() {
   return (
-    <section className="section flex min-h-[100svh] items-center">
+    <section className="section flex min-h-[72svh] items-center md:min-h-[78svh]">
       <div className="container space-y-5">
         <div>
           <h2 className="text-2xl font-medium md:text-3xl">Tech Stack</h2>
