@@ -1,4 +1,4 @@
-import Footer from "@/components/Footer";
+﻿import Footer from "@/components/Footer";
 import { projects } from "@/data/projects";
 import { ArrowUpRight, CheckCircle2, Github } from "lucide-react";
 import Image from "next/image";
@@ -45,13 +45,15 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                 <Github size={15} />
                 GitHub
               </Link>
-              <Link
-                href={project.demoUrl}
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-2 text-sm text-zinc-200 transition hover:border-primary/45 hover:text-primary"
-              >
-                Demo
-                <ArrowUpRight size={15} />
-              </Link>
+              {project.demoUrl && (
+                <Link
+                  href={project.demoUrl}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 px-5 py-2 text-sm text-zinc-200 transition hover:border-primary/45 hover:text-primary"
+                >
+                  Demo
+                  <ArrowUpRight size={15} />
+                </Link>
+              )}
             </div>
           </div>
 
@@ -94,9 +96,9 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
       <section className="pb-16">
         <div className="container">
           <div className="glass-card max-w-4xl p-6 md:p-8">
-            <h2 className="text-2xl font-light">Problem Solving</h2>
+            <h2 className="text-2xl font-light">Major Features</h2>
             <ul className="mt-5 space-y-3">
-              {project.problemSolving.map((item) => (
+              {project.majorFeatures.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-zinc-300">
                   <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-primary" />
                   <span>{item}</span>
@@ -115,3 +117,4 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 export function generateStaticParams() {
   return projects.map((project) => ({ slug: project.slug }));
 }
+

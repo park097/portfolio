@@ -11,10 +11,18 @@ const formatCategoryLabel = (value: Filter) => (value === "All" ? "All" : value 
 export default function ProjectsGrid({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<Filter>("All");
 
-  const filtered = useMemo(
-    () => (filter === "All" ? projects : projects.filter((project) => project.category === filter)),
-    [filter, projects]
-  );
+  const visibleItems = useMemo<(Project | null)[]>(() => {
+    if (filter !== "All") {
+      return projects.filter((project) => project.category === filter);
+    }
+
+    const webProjects = projects.filter((project) => project.category === "web");
+    const appProjects = projects.filter((project) => project.category === "app");
+    const placeholdersNeeded = (3 - (webProjects.length % 3)) % 3;
+    const placeholders = Array.from({ length: placeholdersNeeded }, () => null);
+
+    return [...webProjects, ...placeholders, ...appProjects];
+  }, [filter, projects]);
 
   return (
     <div className="space-y-8">
@@ -36,9 +44,13 @@ export default function ProjectsGrid({ projects }: { projects: Project[] }) {
       </div>
 
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        {filtered.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
-        ))}
+        {visibleItems.map((project, index) =>
+          project ? (
+            <ProjectCard key={project.slug} project={project} />
+          ) : (
+            <div key={`placeholder-${index}`} className="hidden lg:block" aria-hidden />
+          )
+        )}
       </div>
     </div>
   );

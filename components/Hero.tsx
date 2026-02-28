@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import OrbitLines from "@/components/OrbitLines";
@@ -25,12 +25,11 @@ export default function Hero() {
               Developer Portfolio
             </div>
             <h1 className="hero-title mt-3 text-5xl font-medium leading-[1.06] tracking-tight md:text-7xl lg:text-8xl">
-              I build reliable
-              <span className="hero-title-accent block">web & app experiences.</span>
+              I build and deploy reliable
+              <span className="hero-title-accent block">web & app systems.</span>
             </h1>
             <p className="mx-auto mt-5 max-w-3xl whitespace-pre-line text-base leading-relaxed text-zinc-300 md:text-lg">
-              React, Spring Boot 기반의 업무 시스템과{"\n"}온프레미스 인프라 환경에서 실제 운영되는 서비스를
-              개발합니다.
+              SOFTWARE ENGINEER{"\n"}FULL-STACK DEVELOPER · WEB, APP & INFRASTRUCTURE
             </p>
           </div>
         </motion.div>
@@ -42,3 +41,4 @@ export default function Hero() {
     </section>
   );
 }
+

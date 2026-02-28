@@ -12,6 +12,7 @@ type ProjectCardProps = {
 export default function ProjectCard({ project }: ProjectCardProps) {
   const categoryLabel = project.category === "web" ? "Web" : "App";
   const hasSecondaryImage = Boolean(project.secondaryThumbnail);
+  const imageHeight = project.imageHeight ?? 176;
 
   return (
     <Link
@@ -27,7 +28,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         whileHover={{ y: -3, scale: 1.01 }}
         className="glass-card overflow-hidden p-4 transition duration-300 hover:border-primary/40 hover:shadow-glow"
       >
-        <div className="relative mb-4 h-44 overflow-hidden border border-white/10 bg-slate-900/40">
+        <div
+          className="relative mb-4 overflow-hidden border border-white/10 bg-slate-900/40"
+          style={{ height: `${imageHeight}px` }}
+        >
           {!hasSecondaryImage && (
             <Image
               src={project.thumbnail}
