@@ -86,7 +86,6 @@ export default function ContactForm() {
       >
         {isSubmitting ? "Sending..." : "Send Message"}
       </button>
-      <p className="text-xs text-zinc-400">첫 전송 시 FormSubmit 인증 메일에서 활성화가 필요할 수 있습니다.</p>
     </form>
   );
 }
