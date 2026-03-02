@@ -156,25 +156,6 @@ export const projects: Project[] = [
   githubUrl: "https://www.notion.so/Full-Stack-Developer-Portfolio-23ad112469dd80d8b1c0cba116759e6b?p=23ad112469dd81d6ba63de182929eb00&pm=c",
   demoUrl: ""
 },
-  {
-    slug: "wedding",
-    title: "Wedding Invitation",
-    description: "모바일 중심 청첩장 웹앱",
-    longDescription:
-      "모바일 사용성을 중심으로 일정/장소/갤러리/방명록 등 필요한 기능을 구성한 청첩장 웹앱 프로젝트입니다.",
-    majorFeatures: [
-      "일정/장소/계좌/연락 등 핵심 정보 섹션화",
-      "갤러리 및 방명록 인터랙션 구성",
-      "모바일 화면 비율 최적화 및 성능 고려한 이미지 구성",
-    ],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    category: "web",
-    type: "Personal",
-    imageHeight: 250,
-    thumbnail: "/projects/weddingMain.png",
-    githubUrl: "https://github.com/weddingMain.png",
-    demoUrl: "https://wedding.mhdev.co.kr",
-  },
    {
     slug: "portfolio",
     title: "Developer Portfolio",
@@ -184,9 +165,9 @@ export const projects: Project[] = [
     majorFeatures: [
       "프로젝트 카드 필터링, 상세 페이지 라우팅, 썸네일 구성 등 포트폴리오 핵심 기능 구현",
       "Hero 인터랙션, 스크롤 유도, 섹션 전환 애니메이션 등 사용자 경험 중심 UI 구성",
-      "온프레미스 서버 구축 후 Nginx 리버스 프록시와 도메인 연결로 외부 접근 가능한 형태로 배포",
+      "Ubuntu 기반 서버 환경을 구축하고, AWS EC2에 배포한 뒤 GitHub Actions를 활용해 CI/CD 자동화까지 구성",
     ],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Nginx"],
+    stack: ["Next.js", "TypeScript", "CSS","Nginx","Ubuntu","AWS EC2","CI/CD"],
     category: "web",
     type: "Personal",
     imageHeight: 250,
@@ -201,18 +182,39 @@ export const projects: Project[] = [
   longDescription:
     "Spring Boot와 React(TypeScript)로 인증/권한, 품목 마스터, 재고 입출고, 생산지시 관리 기능을 end-to-end로 구현했습니다. 생산 완료 시 재고 자동 반영 로직을 적용해 도메인 간 데이터 흐름을 연결했고, 온프레미스 Ubuntu 서버에 Nginx 리버스 프록시 구성으로 실제 운영 형태까지 배포했습니다.",
   majorFeatures: [
-    "JWT 인증과 ADMIN/USER 권한 분리, Protected Route 기반 접근 제어로 업무 화면 보안 구성",
     "품목 CRUD + 안전재고 관리, 재고 입출고/현재고/이력 조회 및 LOT 메모 기반 추적 기능 구현",
     "생산지시 생성/진행/완료 처리와 완료 시 재고 IN 자동 반영, 대시보드 KPI·D-Day·재고리스크 시각화 제공",
+    "Docker 기반 컨테이너 배포와 AWS EC2 운영 환경을 구성하고, GitHub Actions를 활용해 CI/CD 자동화 구현",
+
+    
   ],
-  stack: ["Java 17","Spring Boot","Spring Security","JPA (Hibernate)","MySQL","React","TypeScript", "Vite","MUI","Nginx", "Ubuntu", ],
+  stack: ["Java 17","Spring Boot","Spring Security","JPA (Hibernate)","MySQL","React","TypeScript", "Vite","Nginx","Ubuntu","AWS EC2","CI/CD","Docker"],
   category: "web",
   type: "Personal",
   imageHeight: 250,
   thumbnail: "/projects/mesMain.png",
   githubUrl: "https://www.notion.so/Full-Stack-Developer-Portfolio-23ad112469dd80d8b1c0cba116759e6b?p=310d112469dd8061abecd6b840d1148b&pm=c",
   demoUrl: "https://mes.mhdev.co.kr",
-}
+},
+{
+  slug: "wedding",
+  title: "Wedding Invitation",
+  description: "모바일 중심 청첩장 웹앱",
+  longDescription:
+    "모바일 사용성을 중심으로 일정/장소/갤러리/방명록 등 필요한 기능을 구성한 청첩장 웹앱 프로젝트입니다.",
+  majorFeatures: [
+    "갤러리 및 방명록 인터랙션 구성",
+    "모바일 화면 비율 최적화 및 성능 고려한 이미지 구성",
+    "Ubuntu 기반 서버 환경을 구축하고, AWS EC2에 배포한 뒤 GitHub Actions를 활용해 CI/CD 자동화까지 구성",
+  ],
+  stack: ["Next.js", "TypeScript", "CSS","React","Nginx","Ubuntu","AWS EC2","CI/CD"],
+  category: "web",
+  type: "Personal",
+  imageHeight: 250,
+  thumbnail: "/projects/weddingMain.png",
+  githubUrl: "https://github.com/weddingMain.png",
+  demoUrl: "https://wedding.mhdev.co.kr",
+},
 ];
 
 export const projectFilters: Array<"All" | ProjectCategory> = ["All", "web", "app"];
