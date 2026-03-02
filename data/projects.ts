@@ -173,7 +173,7 @@ export const projects: Project[] = [
     imageHeight: 250,
     thumbnail: "/projects/weddingMain.png",
     githubUrl: "https://github.com/weddingMain.png",
-    demoUrl: "https://wedding.co.kr",
+    demoUrl: "https://wedding.mhdev.co.kr",
   },
    {
     slug: "portfolio",
