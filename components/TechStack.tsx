@@ -7,7 +7,7 @@ const stackGroups = [
   {
     title: "Frontend",
     icon: LayoutPanelTop,
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "Vue.js", "HTML5", "CSS", "Vite",],
+    items: ["React", "Next.js", "TypeScript", "JavaScript", "Vue.js", "HTML5", "CSS"],
   },
   {
     title: "Backend",
@@ -22,12 +22,12 @@ const stackGroups = [
   {
     title: "Database",
     icon: Database,
-    items: ["MSSQL", "MySQL", "Firebase"],
+    items: ["MSSQL", "MySQL", "Firebase","Stored Procedure"],
   },
   {
     title: "Infra & DevOps",
     icon: CloudCog,
-    items: ["Nginx", "Ubuntu"],
+    items: ["Nginx", "Linux (Ubuntu)","AWS EC2","Docker","GitHub Actions (CI/CD)","Certbot (SSL)","VirtualBox"],
   },
   {
     title: "Tools & Collaboration",
