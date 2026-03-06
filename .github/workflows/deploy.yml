@@ -17,34 +17,26 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: |
-          npm run build
+        run: npm run build
 
-      - name: Clean server folder
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            sudo rm -rf /var/www/portfolio/*
-
-      - name: Upload static files
+      - name: Upload build files to server temp
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "out/*"
-          target: "/var/www/portfolio/"
+          target: "/home/ubuntu/portfolio-build/"
 
-      - name: Fix permissions and reload nginx
+      - name: Deploy on server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
+            sudo rm -rf /var/www/portfolio
+            sudo mv /home/ubuntu/portfolio-build/out /var/www/portfolio
             sudo chown -R www-data:www-data /var/www/portfolio
             sudo chmod -R 755 /var/www/portfolio
             sudo systemctl reload nginx
