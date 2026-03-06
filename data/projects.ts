@@ -212,7 +212,7 @@ export const projects: Project[] = [
   type: "Personal",
   imageHeight: 250,
   thumbnail: "/projects/weddingMain.png",
-  githubUrl: "https://github.com/weddingMain.png",
+  githubUrl: "https://www.notion.so/Full-Stack-Developer-Portfolio-23ad112469dd80d8b1c0cba116759e6b?p=310d112469dd80b193b4c70678018b97&pm=c",
   demoUrl: "https://wedding.mhdev.co.kr",
 },
 ];
