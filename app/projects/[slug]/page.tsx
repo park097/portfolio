@@ -44,7 +44,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                 className="inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/12 px-5 py-2 text-sm text-primary transition hover:shadow-glow"
               >
                 <FileText size={15} />
-                GitHub
+                Notion
               </Link>
               {project.demoUrl && (
                 <Link
