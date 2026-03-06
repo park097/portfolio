@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Install dependencies
@@ -19,14 +19,14 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Upload build files to server temp
+      - name: Upload build folder
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "out/*"
-          target: "/home/ubuntu/portfolio-build/"
+          source: "out"
+          target: "/home/ubuntu/"
 
       - name: Deploy on server
         uses: appleboy/ssh-action@master
@@ -36,7 +36,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             sudo rm -rf /var/www/portfolio
-            sudo mv /home/ubuntu/portfolio-build/out /var/www/portfolio
+            sudo mv /home/ubuntu/out /var/www/portfolio
             sudo chown -R www-data:www-data /var/www/portfolio
             sudo chmod -R 755 /var/www/portfolio
             sudo systemctl reload nginx
