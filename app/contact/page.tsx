@@ -1,10 +1,10 @@
 import Footer from "@/components/Footer";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { FileText, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 
 const links = [
   { href: "mailto:minhee.park@example.com", label: "Email", icon: Mail },
-  { href: "https://github.com/example", label: "GitHub", icon: Github },
+  { href: "https://github.com/example", label: "GitHub", icon: FileText },
   { href: "https://linkedin.com/in/example", label: "LinkedIn", icon: Linkedin },
 ];
 

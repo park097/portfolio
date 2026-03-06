@@ -1,6 +1,6 @@
 "use client";
 
-import { FileText, Github, Mail, Phone } from "lucide-react";
+import { FileText, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 
 const EMAIL = "qkralsgml24@gmail.com";
@@ -50,7 +50,7 @@ export default function ContactChannels() {
           className="flex items-center justify-between rounded-lg border border-white/12 px-4 py-3 text-sm text-zinc-200 transition hover:border-primary/45 hover:text-primary"
         >
           <span className="inline-flex items-center gap-2">
-            <Github size={16} />
+            <FileText size={16} />
             GitHub
           </span>
           <span aria-hidden>→</span>

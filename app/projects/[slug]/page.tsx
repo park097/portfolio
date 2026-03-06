@@ -1,6 +1,6 @@
 ﻿import Footer from "@/components/Footer";
 import { projects } from "@/data/projects";
-import { ArrowUpRight, CheckCircle2, Github } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, FileText } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -43,7 +43,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
                 href={project.githubUrl}
                 className="inline-flex items-center gap-2 rounded-full border border-primary/60 bg-primary/12 px-5 py-2 text-sm text-primary transition hover:shadow-glow"
               >
-                <Github size={15} />
+                <FileText size={15} />
                 GitHub
               </Link>
               {project.demoUrl && (

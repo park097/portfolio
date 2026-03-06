@@ -1,9 +1,9 @@
-import { Github, Mail, Phone } from "lucide-react";
+import { FileText, Mail, Phone } from "lucide-react";
 import Link from "next/link";
 
 const links = [
   { href: "mailto:qkralsgml24@gmail.com", label: "Email", icon: Mail },
-  { href: "https://github.com/park097", label: "GitHub", icon: Github },
+  { href: "https://github.com/park097", label: "GitHub", icon: FileText },
   { href: "tel:01087422845", label: "010-8742-2845", icon: Phone },
 ];
 
