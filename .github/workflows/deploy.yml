@@ -17,7 +17,9 @@ jobs:
         run: npm install
 
       - name: Build project
-        run: npm run build
+        run: |
+          npm run build
+          npx next export
 
       - name: Clean server folder
         uses: appleboy/ssh-action@master
