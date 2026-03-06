@@ -10,17 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install
+      - name: Install dependencies
         run: npm install
 
-      - name: Build
-        run: |
-          npm run build
+      - name: Build project
+        run: npm run build
 
-      - name: Deploy to EC2
+      - name: Clean server folder
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo rm -rf /var/www/portfolio/*
+
+      - name: Upload static files
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -29,7 +37,7 @@ jobs:
           source: "out/*"
           target: "/var/www/portfolio/"
 
-      - name: Reload nginx
+      - name: Fix permissions and reload nginx
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -37,4 +45,5 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             sudo chown -R www-data:www-data /var/www/portfolio
+            sudo chmod -R 755 /var/www/portfolio
             sudo systemctl reload nginx
